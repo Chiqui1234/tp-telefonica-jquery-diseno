@@ -1,0 +1,9 @@
+<div id="infoDelDia" class="widget ok padding">
+
+</div>
+<script src="assets/js/ejercicio5.js"></script>
+<script>
+    let fechaCompleta = obtenerInformacionDelDia();
+    let fechaFinal = `<p>Hoy es ${fechaCompleta.diaDeLaSemana} ${fechaCompleta.numeroDiaDelMes} de ${fechaCompleta.mes}.</p>`;
+    document.getElementById('infoDelDia').innerHTML = fechaFinal;
+</script>

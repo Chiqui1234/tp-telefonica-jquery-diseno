@@ -1,0 +1,171 @@
+*
+{
+    box-sizing: border-box; /* El padding está incluído en el tamaño especificado en el CSS */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: border 0.5s, box-shadow 0.5s, color 0.5s;
+}
+:root 
+{
+    --sentenceColor1: rgb(49, 54, 53);
+    --sentenceColor2: rgb(109, 115, 119);
+    --highLight: rgb(16, 201, 161);
+    --linkColor: rgb(53, 197, 233);
+    --linkHover: rgb(70, 68, 236);
+    --ok: rgb(48, 211, 102);
+    --warn: rgb(241, 181, 68);
+    --background1: rgba(255, 255, 255, 0.5);
+    --background2: rgba(50, 50, 50, 1.0);
+}
+body
+{
+    margin: 0;
+    overflow-x: hidden;
+}
+span {color: var(--highLight);}
+p, ul, ol
+{
+    line-height: 38px;
+    font-size: 18px;
+    color: var(--sentenceColor1);
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+}
+a
+{
+    color: var(--linkColor);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid var(--linkColor);
+}
+a:hover
+{
+    color: var(--linkHover);
+    border-bottom: 2px solid var(--linkHover);
+}
+/* Clases auxiliares */
+.grid-flex 
+{
+    display: flex;
+    flex-flow: row wrap; /* OK elements, go as far as you can on one line, then wrap as you see fit */
+}
+.grid-4  
+{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.grid-2  
+{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.gap    {gap: 10px;}
+.padding
+{
+    padding: 10px;
+}
+.margin-top
+{
+    margin-top: 10px;
+}
+.read-width
+{
+    width: 70%;
+    margin: 10px auto;
+}
+.okText
+{
+    color: var(--ok);
+}
+.warnText
+{
+    color: var(--warn);
+}
+/* Sidebar */
+#sidebar
+{
+    width: 42px;
+    height: 100vh;
+    padding: 0 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--background2);
+    transition: width 0.5s ease-out;
+}
+    #sidebar:hover
+    {
+        width: 33vw;
+        background: var(--background1);
+        backdrop-filter: blur(7px);
+    }
+    #sidebar .texto 
+    {
+        width: 0;
+        display: none;
+        padding-left: 5px;
+    }
+    #sidebar:hover .texto 
+    {
+        width: calc(100% - 32px);
+        display: inline-block;
+    }
+    #sidebar ul
+    {
+        padding: 0;
+        list-style: none;
+    }
+    #sidebar ul li ul
+    {
+        padding-left: 20px;
+        list-style: none;
+    }
+    #sidebar ul li i 
+    {
+        display: inline-block;
+    }
+    #sidebar ul li:hover .dropdown
+    {
+        display: block;
+    }
+    #sidebar ul li ul
+    {
+        display: none;
+    }
+    #sidebar a
+    {
+        color: var(--linkColor);
+        border: none;
+    }
+    #sidebar a:hover
+    {
+        color: var(--highLight);
+    }
+/* Main */
+main
+{
+    width: calc(100% - 42px);
+    margin-left: 42px;
+    padding: 20px 10px 10px 10px;
+}
+/* Widget */
+.ok
+{
+    border: 1px solid var(--ok);
+}
+.warn 
+{
+    border: 1px solid var(--warn);
+}
+.widget
+{
+    border-radius: 10px;
+}
+/* Responsive */
+@media (max-width: 1279px) { /* Entre 1023px y 1279px (tablets) */
+    .grid-4 {grid-template-columns: repeat(2, 50%);}
+    .grid-2 {grid-template-columns: 100%;}
+    #sidebar:hover {width: 50vw;}
+}
+@media (max-width: 1023px) { /* 1023px o menor */
+    .grid-2, .grid-4 {grid-template-columns: calc(100% - 20px);}
+    #sidebar:hover {width: 70vw;}
+}

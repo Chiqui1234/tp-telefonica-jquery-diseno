@@ -1,0 +1,47 @@
+<!-- Perfil back -->
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Alta de alumnos</title>
+        <link rel="stylesheet" href="/assets/css/main.css" />
+        <link rel="stylesheet" href="/assets/css/all.min.css" />
+    </head>
+<body>
+    <div id="sidebar">
+        <ul>
+            <li>
+                <a href="/ejercicio2.html"><i class="fas fa-user"></i> <div class="texto">Usuarios</div></a>
+                <ul class="dropdown">
+                    <li><a href="/ejercicio2.html"><div class="texto">Agregar</div></a></li>
+                    <li><a href="/ejercicio3.html"><div class="texto">Comprobar</div></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/ejercicio4.html"><i class="fas fa-sign-out-alt"></i> <div class="texto">Sesión</div></a>
+                <ul class="dropdown">
+                    <li><a href=""><div class="texto">Re-ingresar</a></div></li>
+                    <li><a href=""><div class="texto">Cerrar sesión</a></div></li>
+                </ul>
+            </li>
+        </ul>
+        
+    </div>
+    <main class="grid-flex gap">
+        <!-- ej 5. Fecha completa (AJAX) -->
+    </main>
+
+<script src="assets/js/ejercicio2.js"></script>
+<script src="assets/js/ejercicio3.js"></script>
+<script src="assets/js/ejercicio4.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("main").load("/assets/component/fechaCompleta.html");
+    //     $('#sidebar').click(function() {
+    //         alert('clickkkk');
+    //     });
+    });
+</script>
+</body>
+</html>
