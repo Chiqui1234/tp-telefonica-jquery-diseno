@@ -9,17 +9,13 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     </head>
 <body>
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
     <div id="sidebar"> <!-- sidebar -->
         <ul>
             <li><a href="index.html"><i class="fas fa-home"></i> <div class="texto">Inicio</div></a></li>
             <li>
                 <a><i class="fas fa-user"></i> <div class="texto">Usuarios</div></a>
                 <ul class="dropdown">
-                    <li><a onclick="cargarAltaDeAlumnos();"><div class="texto">Agregar</div></a></li>
+                    <li><a id="agregarLink"><div class="texto">Agregar</div></a></li>
                     <li><a href="ejercicio3.html"><div class="texto">Comprobar</div></a></li>
                 </ul>
             </li>
@@ -35,23 +31,26 @@
     <main class="grid-flex">
         <div id="ajaxBienvenida"></div> <!-- Bienvenida al usuario (AJAX) -->
         <div id="ajaxFecha"></div> <!-- ej 5. Fecha completa (AJAX) -->
+        <div id="ajaxAlta"></div> <!-- ej 2. Dar de alta a un alumno (AJAX) -->
         <!-- <img src="https://www.passportnissanva.com/inventoryphotos/1006/jn1az4eh7lm821127/ip/1.jpg" width="100%" alt="una imágen de ejemplo" title="Nissan 370Z Nismo" /> -->
     </main>
-
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
 <script src="assets/js/cookies.js"></script>
-<script src="assets/js/ejercicio2.js"></script>
 <script src="assets/js/ejercicio3.js"></script>
 <script src="assets/js/ejercicio4.js"></script>
 
 <script>
     console.log('getCookie: '+getCookie('user'));
+    $('#agregarLink').click(function() {
+            console.log('agregar');
+            $('#ajaxAlta').load('assets/component/altaAlumnos.html');
+        });
     $(document).ready(function() {
         $('#ajaxBienvenida').load('assets/component/bienvenida.html');
         $('#ajaxFecha').load('assets/component/fechaCompleta.html');
-        function cargarAltaDeAlumnos()
-        {
-            $('#ajaxAlta').load('assets/component/altaAlumnos.html');
-        }
     });
 </script>
 </body>

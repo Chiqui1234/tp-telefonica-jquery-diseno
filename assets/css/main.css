@@ -42,6 +42,21 @@ a:hover
     color: var(--linkHover);
     border-bottom: 2px solid var(--linkHover);
 }
+/* Input */
+input, button
+{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--linkColor);
+    margin-bottom: 15px;
+    background: var(--background1);
+}
+input:hover, button:hover
+{
+    border: 1px solid var(--linkHover);
+    color: var(--highLight);
+    box-shadow: 0 0 7px var(--shadow);
+}
 /* Clases auxiliares */
 .grid-flex 
 {
@@ -170,20 +185,6 @@ main div
     margin: 0 auto;
     clear: both;
 }
-    #indexLogin input[type=text], #indexLogin input[type=password], #indexLogin button
-    {
-        width: 100%;
-        padding: 5px;
-        border: 1px solid var(--linkColor);
-        margin-bottom: 15px;
-        background: var(--background1);
-    }
-    #indexLogin input[type=text]:hover, #indexLogin input[type=password]:hover, #indexLogin button:hover
-    {
-        border: 1px solid var(--linkHover);
-        color: var(--highLight);
-        box-shadow: 0 0 7px var(--shadow);
-    }
 /* Widget */
 .ok
 {
@@ -197,6 +198,10 @@ main div
 {
     border-radius: 10px;
 }
+    .widget p 
+    {
+        line-height: 20px;
+    }
 /* Responsive */
 @media (max-width: 1279px) { /* Entre 1023px y 1279px (tablets) */
     .grid-4 {grid-template-columns: repeat(2, 50%);}
