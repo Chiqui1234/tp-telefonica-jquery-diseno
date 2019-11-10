@@ -79,6 +79,15 @@ a:hover
 {
     color: var(--warn);
 }
+/*  */
+.error
+{
+    border: 1px solid var(--warn);
+}
+.ok 
+{
+    border: 1px solid var(--ok);
+}
 /* Sidebar */
 #sidebar
 {
