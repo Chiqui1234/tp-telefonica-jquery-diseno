@@ -28,7 +28,8 @@
         
     </div>
     <main class="grid-flex gap">
-        <!-- ej 5. Fecha completa (AJAX) -->
+        <div id="ajaxFecha"></div><!-- ej 5. Fecha completa (AJAX) -->
+        <img src="https://www.passportnissanva.com/inventoryphotos/1006/jn1az4eh7lm821127/ip/1.jpg" alt="una imágen de ejemplo" title="Nissan 370Z Nismo" />
     </main>
 <script
 src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -40,7 +41,7 @@ crossorigin="anonymous"></script>
 
 <script>
     $(document).ready(function() {
-        $("main").load("/assets/component/fechaCompleta.html");
+        $("#ajaxFecha").load("/assets/component/fechaCompleta.html");
     });
 </script>
 </body>

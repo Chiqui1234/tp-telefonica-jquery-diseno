@@ -13,7 +13,7 @@
     --linkHover: rgb(70, 68, 236);
     --ok: rgb(48, 211, 102);
     --warn: rgb(241, 181, 68);
-    --background1: rgba(255, 255, 255, 0.5);
+    --background1: rgba(255, 255, 255, 0.6);
     --background2: rgba(50, 50, 50, 1.0);
 }
 body
@@ -102,7 +102,7 @@ a:hover
 }
     #sidebar:hover
     {
-        width: 33vw;
+        width: 15vw;
         background: var(--background1);
         backdrop-filter: blur(7px);
     }
@@ -155,6 +155,10 @@ main
     margin-left: 42px;
     padding: 20px 10px 10px 10px;
 }
+main div
+{
+    margin: 0 5px 5px 0;
+}
 /* Widget */
 .ok
 {
@@ -172,9 +176,9 @@ main
 @media (max-width: 1279px) { /* Entre 1023px y 1279px (tablets) */
     .grid-4 {grid-template-columns: repeat(2, 50%);}
     .grid-2 {grid-template-columns: 100%;}
-    #sidebar:hover {width: 50vw;}
+    #sidebar:hover {width: 25vw;}
 }
 @media (max-width: 1023px) { /* 1023px o menor */
     .grid-2, .grid-4 {grid-template-columns: calc(100% - 20px);}
-    #sidebar:hover {width: 70vw;}
+    #sidebar:hover {width: 30vw;}
 }
