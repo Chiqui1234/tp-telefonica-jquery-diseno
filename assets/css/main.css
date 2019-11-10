@@ -105,6 +105,7 @@ a:hover
         width: 15vw;
         background: var(--background1);
         backdrop-filter: blur(7px);
+        box-shadow: 0 0 5px var(--background2);
     }
     #sidebar .texto 
     {
