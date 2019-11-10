@@ -4,21 +4,22 @@
     <head>
         <meta charset="UTF-8" />
         <title>Alta de alumnos</title>
-        <link rel="stylesheet" href="/assets/css/main.css" />
-        <link rel="stylesheet" href="/assets/css/all.min.css" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="assets/css/all.min.css" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     </head>
 <body>
     <div id="sidebar">
         <ul>
             <li>
-                <a href="/ejercicio2.html"><i class="fas fa-user"></i> <div class="texto">Usuarios</div></a>
+                <a href="ejercicio2.html"><i class="fas fa-user"></i> <div class="texto">Usuarios</div></a>
                 <ul class="dropdown">
-                    <li><a href="/ejercicio2.html"><div class="texto">Agregar</div></a></li>
-                    <li><a href="/ejercicio3.html"><div class="texto">Comprobar</div></a></li>
+                    <li><a href="ejercicio2.html"><div class="texto">Agregar</div></a></li>
+                    <li><a href="ejercicio3.html"><div class="texto">Comprobar</div></a></li>
                 </ul>
             </li>
             <li>
-                <a href="/ejercicio4.html"><i class="fas fa-sign-out-alt"></i> <div class="texto">Sesión</div></a>
+                <a href="ejercicio4.html"><i class="fas fa-sign-out-alt"></i> <div class="texto">Sesión</div></a>
                 <ul class="dropdown">
                     <li><a href=""><div class="texto">Re-ingresar</a></div></li>
                     <li><a href=""><div class="texto">Cerrar sesión</a></div></li>
@@ -41,7 +42,7 @@ crossorigin="anonymous"></script>
 
 <script>
     $(document).ready(function() {
-        $("#ajaxFecha").load("/assets/component/fechaCompleta.html");
+        $("#ajaxFecha").load("assets/component/fechaCompleta.html");
     });
 </script>
 </body>
