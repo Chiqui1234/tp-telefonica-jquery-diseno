@@ -1,0 +1,6 @@
+<script src="assets/js/cookies.js"></script>
+<div id="bienvenida" class="widget ok padding"></div>
+<script>
+    let user = getCookie('user');
+    $('#bienvenida').append(`<p>¡Bienvenid@, ${user}!</p>`);
+</script>

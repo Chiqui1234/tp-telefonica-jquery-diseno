@@ -8,8 +8,9 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     </head>
 <body>
-    <main>
-        <form>
+    <main class="read-width">
+        <form id="indexLogin">
+            <img src="assets/img/github.jpeg" width="100%" />
             <input type="text" id="email" placeholder="E-mail" />
             <input type="password" id="pass" placeholder="Contraseña" />
             <button type="button" id="submit">Iniciar sesión</button>
@@ -21,59 +22,9 @@
 src="https://code.jquery.com/jquery-3.4.1.min.js"
 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 crossorigin="anonymous"></script>
+<script src="assets/js/ejercicio4.js"></script>
+<script src="assets/js/cookies.js"></script>
 <script>
-    function comprobarCaracteresNoPermitidos(email, caracteresNoPermitidos)
-    {
-        for(let i = 0;i < caracteresNoPermitidos.length;i++)
-            return email.charAt(i) == caracteresNoPermitidos[i]?false:true; // Si estoy leyendo un caracter no permitido, devuelvo FALSE
-        
-        return true; // Si se salió del bucle sin hacer un return previamente, es porque el bucle no encontró ningún caracter malo :)
-    }
-    function comprobarEmail(email)
-    {
-        let caracteresNoPermitidos = // Esto me sirve para validar el email. Es un vector que le paso a comprobarCaracteresNoPermitidos()
-        [
-            '!','#','$','%','^','&','*','(',')','=','[',']','{','}','\'',';',':','='
-        ];
-        let arroba = 0, puntos = 0, caracteres = 0, lectura;
-        for(let i = 0;i < email.length;i++)
-        {
-            lectura = email.charAt(i);
-            if( lectura == '@' )
-                arroba++;
-            else if(lectura == '.')
-                puntos++;
-            else
-                if( comprobarCaracteresNoPermitidos(email, caracteresNoPermitidos) )
-                        caracteres++; // +1 al contador de caracteres
-                else // Si hay algún caracter raro, el email es inválido
-                    return false;
-        }
-        return arroba==1&&puntos <= 3&&puntos>=1&&caracteres > 4?true:false;
-    }
-    function comprobarContrasena(contrasena)
-    {
-        return contrasena.length>8?true:false;
-    }
-    function comprobarLogin(datos)
-    {
-        let estadoSesion = {
-            emailOk: false,
-            contrasenaOk: false,
-            clase: 'false' // .error u .ok debe ser activada
-        };
-        estadoSesion.emailOk = comprobarEmail(datos.email);
-        estadoSesion.contrasenaOk = comprobarContrasena(datos.contrasena);
-        if( estadoSesion.emailOk && estadoSesion.contrasenaOk )
-            estadoSesion.clase = 'ok';
-        else
-            estadoSesion.clase = 'error';
-        
-        console.log('En la función: ');
-        console.log(estadoSesion);
-        return estadoSesion;
-    }
-
 $(document).ready(function() {
     $('#submit').click(function() {
         let datos = 
@@ -82,12 +33,19 @@ $(document).ready(function() {
             contrasena: $('#pass').val()
         };
         let estadoSesion = comprobarLogin(datos); // emailOk, contrasenaOk, clase
-        console.log('En la vista: ');
-        console.log(estadoSesion);
-        $('#estado').html(''); // Sobre-escribo el contenido de la etiqueta
-        $('#estado').addClass(estadoSesion.clase+' padding margin-top');
-        $('#estado').append(`Email dio ${estadoSesion.clase}. `);
-        $('#estado').append(`Contraseña dio ${estadoSesion.clase}. `);    
+            console.log('En la vista: ');
+            console.log(estadoSesion);
+        $('#estado').removeClass('error ok errorText okText'); // Formateo las clases que le dan un borde y color de texto al aviso
+        $('#estado').html(''); // Formateo el contenido de la etiqueta
+        $('#estado').addClass(estadoSesion.clase+' '+estadoSesion.clase+'Text padding margin-top');
+        $('#estado').append(`El email y/o contraseña dieron ${estadoSesion.clase}. `); // Me ahorro if()
+        setTimeout(function() { // Esto lo hago para que se vea #estado cuándo el login valida y redirijo a ejercicio2.html :)
+            if( estadoSesion.clase == 'ok' ) // Si el login validó, voy al panel de control  
+            {
+                setCookie('user', datos.email, 7); // Esto está sin encriptar ni uso un token de sesión. Claramente sirve únicamente para simular el login sin base de datos y nunca debería usarse en producción
+                $(location).attr('href', 'ejercicio2.html');
+            } 
+        }, 1000);
     });
 });
 </script>

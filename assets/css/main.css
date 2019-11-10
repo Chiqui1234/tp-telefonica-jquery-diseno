@@ -11,10 +11,11 @@
     --highLight: rgb(16, 201, 161);
     --linkColor: rgb(53, 197, 233);
     --linkHover: rgb(70, 68, 236);
-    --ok: rgb(48, 211, 102);
-    --warn: rgb(241, 181, 68);
-    --background1: rgba(255, 255, 255, 0.6);
+    --ok: rgb(55, 209, 171);
+    --warn: rgb(247, 153, 47);
+    --background1: rgba(255, 255, 255, 0.7);
     --background2: rgba(50, 50, 50, 1.0);
+    --shadow: rgba(50, 50, 50, 0.25);
 }
 body
 {
@@ -75,7 +76,7 @@ a:hover
 {
     color: var(--ok);
 }
-.warnText
+.errorText
 {
     color: var(--warn);
 }
@@ -105,7 +106,7 @@ a:hover
         width: 15vw;
         background: var(--background1);
         backdrop-filter: blur(7px);
-        box-shadow: 0 0 5px var(--background2);
+        box-shadow: 0 0 5px var(--shadow);
     }
     #sidebar .texto 
     {
@@ -121,10 +122,12 @@ a:hover
     #sidebar ul
     {
         padding: 0;
+        margin: 10px 0;
         list-style: none;
     }
     #sidebar ul li ul
     {
+        margin: 0;
         padding-left: 20px;
         list-style: none;
     }
@@ -144,6 +147,7 @@ a:hover
     {
         color: var(--linkColor);
         border: none;
+        cursor: pointer;
     }
     #sidebar a:hover
     {
@@ -152,14 +156,34 @@ a:hover
 /* Main */
 main
 {
-    width: calc(100% - 42px);
-    margin-left: 42px;
-    padding: 20px 10px 10px 10px;
+    width: calc(100% - 52px);
+    margin: 10px 0 0 52px;
 }
 main div
 {
-    margin: 0 5px 5px 0;
+    margin: 0 5px 5px 0; /* Para alinear las cosas en el panel de control. Esto es un HOTFIX, en un toque lo arreglo (retocando la #sidebar) */
 }
+/* Form */
+#indexLogin
+{
+    width: 30%;
+    margin: 0 auto;
+    clear: both;
+}
+    #indexLogin input[type=text], #indexLogin input[type=password], #indexLogin button
+    {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid var(--linkColor);
+        margin-bottom: 15px;
+        background: var(--background1);
+    }
+    #indexLogin input[type=text]:hover, #indexLogin input[type=password]:hover, #indexLogin button:hover
+    {
+        border: 1px solid var(--linkHover);
+        color: var(--highLight);
+        box-shadow: 0 0 7px var(--shadow);
+    }
 /* Widget */
 .ok
 {
@@ -177,9 +201,11 @@ main div
 @media (max-width: 1279px) { /* Entre 1023px y 1279px (tablets) */
     .grid-4 {grid-template-columns: repeat(2, 50%);}
     .grid-2 {grid-template-columns: 100%;}
-    #sidebar:hover {width: 25vw;}
+    #sidebar:hover {width: 35vw;}
+    #indexLogin {width: 50%;}
 }
 @media (max-width: 1023px) { /* 1023px o menor */
     .grid-2, .grid-4 {grid-template-columns: calc(100% - 20px);}
-    #sidebar:hover {width: 30vw;}
+    #sidebar:hover {width: 50vw;}
+    #indexLogin {width: 80%;}
 }

@@ -9,12 +9,17 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     </head>
 <body>
-    <div id="sidebar">
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <div id="sidebar"> <!-- sidebar -->
         <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> <div class="texto">Inicio</div></a></li>
             <li>
                 <a><i class="fas fa-user"></i> <div class="texto">Usuarios</div></a>
                 <ul class="dropdown">
-                    <li><a href="ejercicio2.html"><div class="texto">Agregar</div></a></li>
+                    <li><a onclick="cargarAltaDeAlumnos();"><div class="texto">Agregar</div></a></li>
                     <li><a href="ejercicio3.html"><div class="texto">Comprobar</div></a></li>
                 </ul>
             </li>
@@ -22,27 +27,31 @@
                 <a><i class="fas fa-sign-out-alt"></i> <div class="texto">Sesión</div></a>
                 <ul class="dropdown">
                     <li><a href="#"><div class="texto">Re-ingresar</a></div></li>
-                    <li><a href="#"><div class="texto">Cerrar sesión</a></div></li>
+                    <li><a onclick="cerrarSesion();"><div class="texto">Cerrar sesión</a></div></li>
                 </ul>
             </li>
         </ul>
-        
-    </div>
-    <main class="grid-flex gap">
-        <div id="ajaxFecha"></div><!-- ej 5. Fecha completa (AJAX) -->
-        <img src="https://www.passportnissanva.com/inventoryphotos/1006/jn1az4eh7lm821127/ip/1.jpg" width="100%" alt="una imágen de ejemplo" title="Nissan 370Z Nismo" />
+    </div> <!-- sidebar -->
+    <main class="grid-flex">
+        <div id="ajaxBienvenida"></div> <!-- Bienvenida al usuario (AJAX) -->
+        <div id="ajaxFecha"></div> <!-- ej 5. Fecha completa (AJAX) -->
+        <!-- <img src="https://www.passportnissanva.com/inventoryphotos/1006/jn1az4eh7lm821127/ip/1.jpg" width="100%" alt="una imágen de ejemplo" title="Nissan 370Z Nismo" /> -->
     </main>
-<script
-src="https://code.jquery.com/jquery-3.4.1.min.js"
-integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-crossorigin="anonymous"></script>
+
+<script src="assets/js/cookies.js"></script>
 <script src="assets/js/ejercicio2.js"></script>
 <script src="assets/js/ejercicio3.js"></script>
 <script src="assets/js/ejercicio4.js"></script>
 
 <script>
+    console.log('getCookie: '+getCookie('user'));
     $(document).ready(function() {
-        $("#ajaxFecha").load("assets/component/fechaCompleta.html");
+        $('#ajaxBienvenida').load('assets/component/bienvenida.html');
+        $('#ajaxFecha').load('assets/component/fechaCompleta.html');
+        function cargarAltaDeAlumnos()
+        {
+            $('#ajaxAlta').load('assets/component/altaAlumnos.html');
+        }
     });
 </script>
 </body>
