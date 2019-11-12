@@ -1,0 +1,13 @@
+<ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> <div class="texto">Inicio</div></a></li>
+    <li>
+        <a><i class="fas fa-user"></i> <div class="texto">Usuarios</div></a>
+        <ul class="dropdown">
+            <li><a id="agregarUsuario"><div class="texto">Agregar</div></a></li>
+            <li><a id="comprobarUsuario"><div class="texto">Comprobar</div></a></li>
+        </ul>
+    </li>
+    <li>
+        <a onclick="eraseCookie('user');$(location).attr('href', 'index.html');"><i class="fas fa-sign-out-alt"></i> <div class="texto">Salir</div></a>
+    </li>
+</ul>

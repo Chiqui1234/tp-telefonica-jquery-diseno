@@ -15,42 +15,52 @@
             <li>
                 <a><i class="fas fa-user"></i> <div class="texto">Usuarios</div></a>
                 <ul class="dropdown">
-                    <li><a id="agregarLink"><div class="texto">Agregar</div></a></li>
-                    <li><a href="ejercicio3.html"><div class="texto">Comprobar</div></a></li>
+                    <li><a id="agregarUsuario"><div class="texto">Agregar</div></a></li>
+                    <li><a id="comprobarUsuario"><div class="texto">Comprobar</div></a></li>
                 </ul>
             </li>
             <li>
-                <a><i class="fas fa-sign-out-alt"></i> <div class="texto">Sesión</div></a>
-                <ul class="dropdown">
-                    <li><a href="#"><div class="texto">Re-ingresar</a></div></li>
-                    <li><a onclick="cerrarSesion();"><div class="texto">Cerrar sesión</a></div></li>
-                </ul>
+                <a onclick="eraseCookie('user');$(location).attr('href', 'index.html');"><i class="fas fa-sign-out-alt"></i> <div class="texto">Salir</div></a>
             </li>
         </ul>
     </div> <!-- sidebar -->
+    <script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+<script src="assets/js/cookies.js"></script>
+<script src="assets/js/estado.js"></script>
+<script src="assets/js/ejercicio2.js"></script>
+<script src="assets/js/ejercicio3.js"></script>
+<script src="assets/js/ejercicio4.js"></script>
     <main class="grid-flex">
         <div id="ajaxBienvenida"></div> <!-- Bienvenida al usuario (AJAX) -->
         <div id="ajaxFecha"></div> <!-- ej 5. Fecha completa (AJAX) -->
         <div id="ajaxAlta"></div> <!-- ej 2. Dar de alta a un alumno (AJAX) -->
         <!-- <img src="https://www.passportnissanva.com/inventoryphotos/1006/jn1az4eh7lm821127/ip/1.jpg" width="100%" alt="una imágen de ejemplo" title="Nissan 370Z Nismo" /> -->
     </main>
-<script
-src="https://code.jquery.com/jquery-3.4.1.min.js"
-integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-crossorigin="anonymous"></script>
-<script src="assets/js/cookies.js"></script>
-<script src="assets/js/ejercicio3.js"></script>
-<script src="assets/js/ejercicio4.js"></script>
-
 <script>
     console.log('getCookie: '+getCookie('user'));
-    $('#agregarLink').click(function() {
-            console.log('agregar');
-            $('#ajaxAlta').load('assets/component/altaAlumnos.html');
-        });
     $(document).ready(function() {
+        console.log('ready');
+        // $('#sidebar').load('assets/component/sidebar.html');
         $('#ajaxBienvenida').load('assets/component/bienvenida.html');
         $('#ajaxFecha').load('assets/component/fechaCompleta.html');
+        $('#agregarUsuario').click(function() {
+            console.log('#agregarUsuario');
+            $('#ajaxAlta').load('assets/component/altaAlumnos.html');
+        });
+        $('#comprobarUsuario').click(function ()
+        {
+            $('#ajaxAlta').load('assets/component/comprobarAlumnos.html');
+        });
+        $('#numeroLegajoo').bind('keyup', function()
+        {
+            let i = $('#numeroLegajoo').val();
+            console.log('numero legajoo '+i);
+            let usuarioAMostrarHtml = alumnos[i-1].mostrar(i-1);
+            $('resultadoAlumno').html(usuarioAMostrarHtml);
+        });
     });
 </script>
 </body>

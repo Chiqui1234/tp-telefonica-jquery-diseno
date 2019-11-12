@@ -58,6 +58,11 @@ input:hover, button:hover
     box-shadow: 0 0 7px var(--shadow);
 }
 /* Clases auxiliares */
+.full-width
+{
+    width: 100%;
+    grid-column: 1 / span;
+}
 .remove-mobile
 {
     display: block;

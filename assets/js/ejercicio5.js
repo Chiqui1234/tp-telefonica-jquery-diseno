@@ -5,7 +5,7 @@ function obtenerInformacionDelDia()
     let fecha = new Date();
     let parseado = 
     {
-        diaDeLaSemana : nombresDias[fecha.getDay()], // string
+        diaDeLaSemana : nombresDias[fecha.getDay()-1], // string
         numeroDiaDelMes : fecha.getDate(), // int
         mes : nombresMeses[fecha.getMonth()]
     };

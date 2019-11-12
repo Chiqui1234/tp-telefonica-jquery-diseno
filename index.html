@@ -8,46 +8,24 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     </head>
 <body>
-    <main class="read-width">
-        <form id="indexLogin">
-            <img src="assets/img/github.jpeg" width="100%" />
-            <input type="text" id="email" placeholder="E-mail" required />
-            <input type="password" id="pass" placeholder="Contraseña" required />
-            <button type="button" id="submit">Iniciar sesión</button>
-            <div id="estado"></div> <!-- Estado del login -->
-        </form>
-        <p><a href="ejercicio2.html">Ejercicio 2</a>.</p>
+    <main id="loginLoad" class="read-width"> <!-- Cargo el formulario con ajax() -->
+        
     </main>
 <script
 src="https://code.jquery.com/jquery-3.4.1.min.js"
 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 crossorigin="anonymous"></script>
-<script src="assets/js/ejercicio4.js"></script>
 <script src="assets/js/cookies.js"></script>
 <script>
-$(document).ready(function() {
-    $('#submit').click(function() {
-        let datos = 
-        {
-            email: $('#email').val(), 
-            contrasena: $('#pass').val()
-        };
-        let estadoSesion = comprobarLogin(datos); // emailOk, contrasenaOk, clase
-            console.log('En la vista: ');
-            console.log(estadoSesion);
-        $('#estado').removeClass('error ok errorText okText'); // Formateo las clases que le dan un borde y color de texto al aviso
-        $('#estado').html(''); // Formateo el contenido de la etiqueta
-        $('#estado').addClass(estadoSesion.clase+' '+estadoSesion.clase+'Text padding margin-top');
-        $('#estado').append(`El email y/o contraseña dieron ${estadoSesion.clase}. `); // Me ahorro if()
-        setTimeout(function() { // Esto lo hago para que se vea #estado cuándo el login valida y redirijo a ejercicio2.html :)
-            if( estadoSesion.clase == 'ok' ) // Si el login validó, voy al panel de control  
-            {
-                setCookie('user', datos.email, 7); // Esto está sin encriptar ni uso un token de sesión. Claramente sirve únicamente para simular el login sin base de datos y nunca debería usarse en producción
-                $(location).attr('href', 'ejercicio2.html');
-            } 
-        }, 1000);
-    });
-});
+    if( getCookie('user') != null )
+    {
+        document.write('<p class="padding">Se te redigirá al panel de control.</p>');
+        setTimeout(function() {
+            $(location).attr('href', 'ejercicio2.html');
+        }, 1500);
+    }
+    else
+        $('#loginLoad').load('assets/component/formularioSesion.html');
 </script>
 </body>
 </html>
