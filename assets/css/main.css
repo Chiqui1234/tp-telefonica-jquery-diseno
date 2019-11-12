@@ -43,7 +43,7 @@ a:hover
     border-bottom: 2px solid var(--linkHover);
 }
 /* Input */
-input, button
+input, button, input:hover:disabled, button:hover:disabled
 {
     width: 100%;
     padding: 5px;
@@ -103,10 +103,12 @@ input:hover, button:hover
 .error
 {
     border: 1px solid var(--warn);
+    border-radius: 5px;
 }
 .ok 
 {
     border: 1px solid var(--ok);
+    border-radius: 5px;
 }
 /* Sidebar */
 #sidebar

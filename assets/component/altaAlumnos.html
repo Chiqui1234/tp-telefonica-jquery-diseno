@@ -1,10 +1,34 @@
 <script src="assets/js/ejercicio2.js"></script>
 <div id="bienvenida" class="widget ok padding">
     <div id="cantAlumnos"></div> <!-- Ej: "Has agregado a X alumnos." -->
+    <div id="estado" style="width: 100%;"></div> <!-- Estado del alta de alumno -->
     <form id="agregarAlumnos" class="grid-2 gap">
         <input type="text" placeholder="Nombre de alumno" id="nombreAlumno" />
-        <input type="number" placeholder="Legajo" id="legajoAlumno" />
-        <button type="button" id="agregarAlumno">Agregar alumno</button>
-        <button type="button" id="terminarAlumno">Enviar</button>
+        <input type="text" placeholder="Legajo" id="legajoAlumno" />
+        <button type="button" id="agregarAlumno" disabled>Agregar alumno</button>
+        <button type="button" id="terminarAlumno" disabled>Enviar</button>
     </form>
 </div>
+<script>
+$(document).ready(function() 
+{
+    $('#legajoAlumno').change(function()
+    {
+        $('#estado').removeClass('error ok errorText okText padding margin-top'); // Formateo las clases que le dan un borde y color de texto al aviso
+        $('#agregarAlumnos').removeClass('margin-top');
+        let numero = parseInt($('#legajoAlumno').val());
+        console.log(numero);
+        if( Number.isInteger(numero) ) // Si es un número
+        {
+            $('#estado').html('');
+            $('#agregarAlumno').prop('disabled', false);
+        } else
+        { 
+            $('#agregarAlumnos').addClass('margin-top');
+            $('#estado').addClass('error errorText padding margin-top');
+            $('#estado').html('<p>El legajo debe ser un número.</p>');
+            $('#agregarAlumno').prop('disabled', true);
+        }
+    });
+});
+</script>
