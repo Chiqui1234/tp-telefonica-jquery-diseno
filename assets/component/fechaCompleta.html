@@ -1,7 +1,8 @@
 <div id="infoDelDia" class="widget ok padding"></div>
-
 <script src="assets/js/ejercicio5.js"></script>
 <script>
     let fechaCompleta = obtenerInformacionDelDia();
     $('#infoDelDia').append(`<p>Hoy es ${fechaCompleta.diaDeLaSemana} ${fechaCompleta.numeroDiaDelMes} de ${fechaCompleta.mes}.</p>`);
+    $('#infoDelDia').append('<div class="clock remove-mobile"><div class="wrap"><span class="hour"></span><span class="minute"></span><span class="second"></span><span class="dot"></span></div></div>');
 </script>
+<script src="assets/js/reloj.js"></script>
