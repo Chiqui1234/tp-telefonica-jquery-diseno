@@ -26,7 +26,7 @@ $(document).ready(function() {
     $('#legajoAlumno').bind('keyup', function() // Comprueba el cambio del legajo
     {
         let numero = parseInt( $('#legajoAlumno').val() );
-        console.log(numero);
+        console.log('Legajo a evaluar: '+numero);
         if( Number.isInteger(numero) ) // Si es un número
         {
             removerEstado('#estado', 'error errorText full-width padding');
@@ -42,25 +42,26 @@ $(document).ready(function() {
     });
     $('#agregarAlumno').click(function ()
     {
-        let nombre = $('#nombreAlumno').val(), apellido = $('#apellidoAlumno'), legajo = parseInt($('#legajoAlumno').val);
+        let nombre = $('#nombreAlumno').val(), apellido = $('#apellidoAlumno').val(), legajo = parseInt($('#legajoAlumno').val());
         alumnos[i] = new Alumno; // En la posición[i] creo un objeto Alumno
         alumnos[i].agregar(nombre, apellido, legajo); // Llamo a la función del alumno
+        console.log(`Nombre: ${alumnos[i].nombre} \n Apellido: ${alumnos[i].apellido} \n Legajo: ${alumnos[i].legajo}`);
         i++;
         imprimirEstado('#cantAlumnos', 'ok okText full-width padding', '¡Agregaste ' + i + ' alumnos!');
     });
     $('#numeroLegajoo').bind('keyup', function() // Ejercicio 3
     {
+        // console.log('Alumnos: ', alumnos[0]);
         removerEstado('#resultadoAlumno', '');
-        let legajo = $('#numeroLegajoo').val();
-        console.log(legajo);
-        let i = 0;
-        while( legajo != alumnos[i].legajo && alumnos[i] != null)
+        let legajo = parseInt($('#numeroLegajoo').val());
+        let z = 0;
+        while( legajo != alumnos[z].legajo )
         {
-            i++;
+            z++;
         }
-        if( legajo == alumnos[i].legajo ) // Lo encontré en el while()
-            imprimirEstado('#resultadoAlumno', '', `<h5>¡Encontrado!</h5><p>${alumnos[i].nombre} ${alumnos[i].apellido} (${alumnos[i].legajo}).</p>`);    
+        if( legajo == alumnos[z].legajo ) // Lo encontré en el while()
+            imprimirEstado('#resultadoAlumno', '', `<h5>¡Encontrado!</h5><p>${alumnos[z].nombre} ${alumnos[z].apellido} (${alumnos[z].legajo}).</p>`);    
         else 
-            imprimirEstado('#resultadoAlumno', '', '<p>No se encontró ese legajo.</p>')
+            imprimirEstado('#resultadoAlumno', '', '<p>No se encontró ese legajo.</p>');
     });
 });
