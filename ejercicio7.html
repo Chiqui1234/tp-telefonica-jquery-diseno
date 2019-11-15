@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Ahorcado</title>
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="assets/css/all.min.css" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    </head>
+<body>
+    <main class="read-width">
+        <p>El ahorcado (también llamado colgado) es un juego de adivinanzas de lápiz y papel para dos o más jugadores. Un jugador piensa en una palabra, frase u oración y el otro trata de adivinarla según lo que sugiere por letras o números. </p>
+        <p>Los orígenes de El Ahorcado son oscuros, pero al parecer surgió en la época victoriana," dice Tony Augarde, autor de "La Guía de Oxford de Juegos de palabras" (Oxford University Press). El juego es mencionado en 1894 en "Juegos tradicionales" de Alice Bertha Gomme bajo el nombre "Aves, Bestias y Peces". Las reglas eran simples: un jugador anota la primera y última letra de una palabra de un animal, y el otro jugador adivina las letras en el medio.</p>
+    </main>
+    <div class="grid-3">
+        <div id="juego" class="widget grid-2">
+            <div id="palabra">
+
+            </div>
+            <div id="muneco">
+
+            </div>
+            <div id="info">
+                <p><span id="cantVidas"></span> vidas</p>
+                <p><span id="cantLetras"></span> letras</p>
+                <input type="text" placeholder="¿Que letra podrá ser?" id="letra" class="full-width" />
+                <input type="button" value="Probar esta letra" id="enviar" />
+            </div>
+        </div>
+    </div>
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+<script>
+function crearGuiones(cantGuiones)
+{
+    let guionesHtml = '';
+    for(let i = 0;i < cantGuiones;i++)
+        guionesHtml += ' _ ';
+    return guionesHtml;
+}
+$(document).ready(function()
+{
+    let palabra = prompt('Ingresar palabra a adivinar por el jugador');
+    let vidas = parseInt(prompt('Ingresar vidas del jugador'));
+    let cantLetras = palabra.length;
+    let cantGuiones = cantLetras-2; // Le resto el primer y último caracter, que son las letras que SI van a aparecer desde el primer momento
+    let guionesHtml = crearGuiones(cantGuiones);
+    let letrasEncontradas = [];
+    $('#cantVidas').html(vidas);
+    $('#cantLetras').html(cantLetras);
+    $('#palabra').html(palabra.charAt(0)+guionesHtml+palabra.charAt(cantLetras-1));
+    $('enviar').click(function()
+    {
+        let letra = $('#letra').val();
+        let pos = search(palabra, letra);
+        if( letra != null && pos != -1 )
+        {
+            letrasEncontradas.push(letra);
+        }
+        else
+        {
+            vidas--;
+        }
+    });
+});
+</script>
+</body>
+</html>

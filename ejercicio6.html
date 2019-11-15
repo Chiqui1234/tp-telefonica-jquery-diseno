@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Ejercicio Math.random() | Loteria</title>
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="assets/css/all.min.css" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    </head>
+<body>
+    <script>
+        alert('Toca la imágen para generar un "número de lotería" y scrollea hacía abajo para verlo. PD: No tenemos idea de cómo se juega a la lotería');
+    </script>
+    <div class="full-width full-height" class="grid-3" style="background:gold;">
+        <a id="generarNumero" style="grid-column: 2;grid-row: 2;cursor: pointer;"><img class="radius" title="¡Pínchame!" src="assets/img/loteria.gif" /></a>
+    </div>
+    <div class="full-width">
+        <h1 style="text-align: center;">Números generados</h1>
+        <div class="read-width">
+            <ul>
+                <div id="numerosGenerados"></div>
+            </ul>
+        </div>
+    </div>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="assets/js/ejercicio6.js"></script>
+</body>
+</html>
