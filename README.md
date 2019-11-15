@@ -1,5 +1,3 @@
-**PROYECTO ABANDONADO (Y ROTO). MIGRÉ EL EJERCICIO A ANGULARJS ANTES DE TERMINAR ESTE DESARROLLO CON JQUERY**
-
 # Gestión front-end de usuarios en Javascript
 ## TP M3 (Telefónica)
 
