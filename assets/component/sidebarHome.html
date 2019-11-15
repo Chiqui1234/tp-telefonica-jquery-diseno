@@ -1,0 +1,51 @@
+<div id="sidebar"> <!-- sidebar -->
+    <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> <div class="texto" title="Ir a la página principal">Inicio</div></a></li>
+        <li>
+            <a><i class="fas fa-user"></i> <div class="texto" title="Iniciar sesión">Ingresar</div></a>
+            <ul class="dropdown">
+                <form>
+                    <input type="text" id="email" placeholder="E-mail" required />
+                    <input type="password" id="pass" placeholder="Contraseña" required />
+                    <button type="button" id="submit">Iniciar sesión</button>
+                    <div id="estado"></div> <!-- Estado del login -->
+                </form>
+                <script src="assets/js/ejercicio4.js"></script>
+                <script src="assets/js/cookies.js"></script>
+                <script>
+                $(document).ready(function() {
+                    $('#submit').click(function() {
+                        let datos = 
+                        {
+                            email: $('#email').val(), 
+                            contrasena: $('#pass').val()
+                        };
+                        let estadoSesion = comprobarLogin(datos); // emailOk, contrasenaOk, clase
+                            console.log('En la vista: ');
+                            console.log(estadoSesion);
+                        $('#estado').removeClass('error ok errorText okText'); // Formateo las clases que le dan un borde y color de texto al aviso
+                        $('#estado').html(''); // Formateo el contenido de la etiqueta
+                        $('#estado').addClass(estadoSesion.clase+' '+estadoSesion.clase+'Text padding margin-top');
+                        $('#estado').append(`El email y/o contraseña dieron ${estadoSesion.clase}. `); // Me ahorro if()
+                        setTimeout(function() { // Esto lo hago para que se vea #estado cuándo el login valida y redirijo a ejercicio2.html :)
+                            if( estadoSesion.clase == 'ok' ) // Si el login validó, voy al panel de control  
+                            {
+                                setCookie('user', datos.email, 7); // Esto está sin encriptar ni uso un token de sesión. Claramente sirve únicamente para simular el login sin base de datos y nunca debería usarse en producción
+                                $(location).attr('href', 'ejercicio2.html');
+                            } 
+                        }, 1500);
+                    });
+                });
+                </script>
+            </ul>
+        </li>
+        <li>
+            <a onclick="eraseCookie('user');$(location).attr('href', 'index.html');"><i class="fa fa-window-close"></i> <div class="texto" title="Borrar Cookies">Cookies</div></a>
+        </li>
+    </ul>
+</div> <!-- sidebar -->
+<script>
+$(document).ready(function() {
+    $('#loginBox').load('assets/components/formularioSesion.html'); // la idea era crear un componente, pero este load() no funcionó así que tuve que incluir formularioSesion.html aquí también :(
+});
+</script>

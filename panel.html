@@ -32,15 +32,15 @@
             <div id="cantAlumnos"></div> <!-- Ej: Imprime "Has agregado a X alumnos." -->
             <div id="estado" style="width: 100%;"></div> <!-- Estado del alta de alumno (notifica de errores) -->
             <form id="agregarAlumnos" class="grid-2 gap">
-                <input type="text" placeholder="Nombre del alumno" id="nombreAlumno" />
-                <input type="text" placeholder="Apellido del alumno" id="apellidoAlumno" />
-                <input type="number" placeholder="Legajo" id="legajoAlumno" />
-                <button type="button" id="agregarAlumno" disabled>Agregar alumno</button>
+                <input type="text" class="full-width" placeholder="Nombre del alumno" id="nombreAlumno" />
+                <input type="text" class="full-width" placeholder="Apellido del alumno" id="apellidoAlumno" />
+                <input type="number" class="full-width" placeholder="Legajo" id="legajoAlumno" />
+                <button type="button" class="full-width" id="agregarAlumno" disabled>Agregar alumno</button>
             </form>
         </div> <!-- #altaDeAlumnos -->
         <div id="comprobarAlumnoBox" class="widget ok padding"> <!-- #comprobarUsuarios -->
             <h3>Comprobar alumno</h3>
-            <input id="numeroLegajoo" type="number" placeholder="Legajo" />
+            <input id="numeroLegajoo" type="number" class="full-width" placeholder="Legajo" />
             <div id="resultadoAlumno"></div>
         </div> <!-- #comprobarUsuarios -->
     </main>
@@ -54,11 +54,10 @@ crossorigin="anonymous"></script>
 <!-- <script src="assets/js/ejercicio3.js"></script> -->
 <script src="assets/js/ejercicio4.js"></script>
 <script>
-    console.log('getCookie: '+getCookie('user'));
-    $('#agregarAlumnoBox').hide();
-    $('#comprobarAlumnoBox').hide();
     $(document).ready(function() {
-        console.log('ready');
+        console.log('getCookie: '+getCookie('user'));
+        $('#agregarAlumnoBox').hide();
+        $('#comprobarAlumnoBox').hide();
         $('#ajaxBienvenida').load('assets/component/bienvenida.html');
         $('#ajaxFecha').load('assets/component/fechaCompleta.html');
         $('#agregarUsuario').click(function ()

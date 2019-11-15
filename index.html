@@ -8,8 +8,21 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     </head>
 <body>
-    <main id="loginLoad" class="read-width"> <!-- Cargo el formulario con ajax() -->
-        
+    <div id="loginLoad"></div>
+    <main class="read-width">
+        <h1>Trabajo práctico M3 | Telefónica</h1>
+        <p>Hola Ángel, ojalá te guste el desarrollo del sitio. La idea original era separar cada parte del sitio web en pequeños componentes, pero todo se empezó a complicar cuándo quería incluir un componente dentro de otro.</p>
+        <p>Vi que este tema de "componentes" está muy resuelto en AngularJS :D</p>
+        <p>No pudimos implementar todo cómo queríamos por falta de tiempo. El grupo real es de dos personas y tuvimos algunos asuntos personales que resolver, pero el trabajo práctico está.</p>
+        <p>Ya vi que me asignaron a mi y mi compañero a otro grupo más numeroso, de los cuáles todos asisten a clase :)</p>
+        <p>¡Nos vemos!</p>
+        <h2>Postdata</h2>
+        <ul>El ejercicio se separa en:
+            <li><a href="index.html">index.html</a> para el ejercicio 4</li>
+            <li><a href="panel.html">panel.html</a> para el ejercicio 1, 2, 3 y 5. <br />Nótese que el ejercicio 1 ya se realizó (en nuestro caso) en el trabajo práctico anterior. Por ende, quisimos innovar un poco y usamos las cookies para mostrar el email en el "perfil back".</li>
+            <li><a href="ejercicio6.html">ejercicio6.html</a> para el ejercicio 6</li>
+            <li><a href="ejercicio7.html">ejercicio7.html</a> para el ejercicio 7</li>
+        </ul>
     </main>
 <script
 src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -21,11 +34,11 @@ crossorigin="anonymous"></script>
     {
         document.write('<p class="padding">Se te redigirá al panel de control.</p>');
         setTimeout(function() {
-            $(location).attr('href', 'ejercicio2.html');
+            $(location).attr('href', 'panel.html');
         }, 1500);
     }
     else
-        $('#loginLoad').load('assets/component/formularioSesion.html');
+        $('#loginLoad').load('assets/component/sidebarHome.html');
 </script>
 </body>
 </html>
