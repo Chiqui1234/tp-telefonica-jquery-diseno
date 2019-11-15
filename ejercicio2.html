@@ -24,6 +24,26 @@
             </li>
         </ul>
     </div> <!-- sidebar -->
+    <main class="grid-flex">
+        <div id="ajaxBienvenida"></div> <!-- Bienvenida al usuario (AJAX) -->
+        <div id="ajaxFecha"></div> <!-- ej 5. Fecha completa (AJAX) -->
+        <div id="agregarAlumnoBox" class="widget ok padding"> <!-- #altaDeAlumnos -->
+            <h3>Agregar alumno</h3>
+            <div id="cantAlumnos"></div> <!-- Ej: Imprime "Has agregado a X alumnos." -->
+            <div id="estado" style="width: 100%;"></div> <!-- Estado del alta de alumno (notifica de errores) -->
+            <form id="agregarAlumnos" class="grid-2 gap">
+                <input type="text" placeholder="Nombre del alumno" id="nombreAlumno" />
+                <input type="text" placeholder="Apellido del alumno" id="apellidoAlumno" />
+                <input type="number" placeholder="Legajo" id="legajoAlumno" />
+                <button type="button" id="agregarAlumno" disabled>Agregar alumno</button>
+            </form>
+        </div> <!-- #altaDeAlumnos -->
+        <div id="comprobarAlumnoBox" class="widget ok padding"> <!-- #comprobarUsuarios -->
+            <h3>Comprobar alumno</h3>
+            <input id="numeroLegajoo" type="number" placeholder="Legajo" />
+            <div id="resultadoAlumno"></div>
+        </div> <!-- #comprobarUsuarios -->
+    </main>
     <script
 src="https://code.jquery.com/jquery-3.4.1.min.js"
 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -31,35 +51,23 @@ crossorigin="anonymous"></script>
 <script src="assets/js/cookies.js"></script>
 <script src="assets/js/estado.js"></script>
 <script src="assets/js/ejercicio2.js"></script>
-<script src="assets/js/ejercicio3.js"></script>
+<!-- <script src="assets/js/ejercicio3.js"></script> -->
 <script src="assets/js/ejercicio4.js"></script>
-    <main class="grid-flex">
-        <div id="ajaxBienvenida"></div> <!-- Bienvenida al usuario (AJAX) -->
-        <div id="ajaxFecha"></div> <!-- ej 5. Fecha completa (AJAX) -->
-        <div id="ajaxAlta"></div> <!-- ej 2. Dar de alta a un alumno (AJAX) -->
-        <!-- <img src="https://www.passportnissanva.com/inventoryphotos/1006/jn1az4eh7lm821127/ip/1.jpg" width="100%" alt="una imágen de ejemplo" title="Nissan 370Z Nismo" /> -->
-    </main>
 <script>
     console.log('getCookie: '+getCookie('user'));
+    $('#agregarAlumnoBox').hide();
+    $('#comprobarAlumnoBox').hide();
     $(document).ready(function() {
         console.log('ready');
-        // $('#sidebar').load('assets/component/sidebar.html');
         $('#ajaxBienvenida').load('assets/component/bienvenida.html');
         $('#ajaxFecha').load('assets/component/fechaCompleta.html');
-        $('#agregarUsuario').click(function() {
-            console.log('#agregarUsuario');
-            $('#ajaxAlta').load('assets/component/altaAlumnos.html');
+        $('#agregarUsuario').click(function ()
+        {
+            $('#agregarAlumnoBox').show();
         });
         $('#comprobarUsuario').click(function ()
         {
-            $('#ajaxAlta').load('assets/component/comprobarAlumnos.html');
-        });
-        $('#numeroLegajoo').bind('keyup', function()
-        {
-            let i = $('#numeroLegajoo').val();
-            console.log('numero legajoo '+i);
-            let usuarioAMostrarHtml = alumnos[i-1].mostrar(i-1);
-            $('resultadoAlumno').html(usuarioAMostrarHtml);
+            $('#comprobarAlumnoBox').show();
         });
     });
 </script>

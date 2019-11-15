@@ -7,11 +7,10 @@ class Alumno
         this.legajo = legajo;
     }
     //
-    agregar = function(nombres, legajo)
+    agregar = function(nombre, apellido, legajo)
     {
-        let nombresTokens = nombres.split(' ');
-        this.nombre = nombresTokens[0];
-        this.apellido = nombresTokens[1];
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.legajo = legajo;
     }
     mostrar = function(iterador)
@@ -24,15 +23,6 @@ class Alumno
 var alumnos = []; // Primero creo el array
 var i = 0; // Tengo un contador que modifico cada vez que agrego/elimino un alumno
 $(document).ready(function() {
-    $('#nombreAlumno').bind('keyup', function()
-    {
-        let nombres = $('#nombreAlumno').val().split(' ');
-        console.log(nombres);
-        if( nombres[1] == '' || nombres[1] == null )
-            imprimirEstado('#estado', 'error errorText full-width padding', 'Coloca nombre y apellido');
-        else
-            removerEstado('#estado', 'error errorText full-width padding');
-    });
     $('#legajoAlumno').bind('keyup', function() // Comprueba el cambio del legajo
     {
         let numero = parseInt( $('#legajoAlumno').val() );
@@ -52,13 +42,25 @@ $(document).ready(function() {
     });
     $('#agregarAlumno').click(function ()
     {
-        // removerEstado('#cantAlumnos', 'ok okText padding');
+        let nombre = $('#nombreAlumno').val(), apellido = $('#apellidoAlumno'), legajo = parseInt($('#legajoAlumno').val);
         alumnos[i] = new Alumno; // En la posición[i] creo un objeto Alumno
-        let nombreCompletoAlumno = $('#nombreAlumno').val(); // Capto el valor de mi input#nombreAlumno
-        let legajo = $('#legajoAlumno').val(); // Capto el valor de input#legajoAlumno
-        console.log('Legajo es un número. Voy a crear el alumno.');
-        alumnos[i].agregar(nombreCompletoAlumno, legajo); // Llamo a la función del alumno
+        alumnos[i].agregar(nombre, apellido, legajo); // Llamo a la función del alumno
         i++;
         imprimirEstado('#cantAlumnos', 'ok okText full-width padding', '¡Agregaste ' + i + ' alumnos!');
+    });
+    $('#numeroLegajoo').bind('keyup', function() // Ejercicio 3
+    {
+        removerEstado('#resultadoAlumno', '');
+        let legajo = $('#numeroLegajoo').val();
+        console.log(legajo);
+        let i = 0;
+        while( legajo != alumnos[i].legajo && alumnos[i] != null)
+        {
+            i++;
+        }
+        if( legajo == alumnos[i].legajo ) // Lo encontré en el while()
+            imprimirEstado('#resultadoAlumno', '', `<h5>¡Encontrado!</h5><p>${alumnos[i].nombre} ${alumnos[i].apellido} (${alumnos[i].legajo}).</p>`);    
+        else 
+            imprimirEstado('#resultadoAlumno', '', '<p>No se encontró ese legajo.</p>')
     });
 });
