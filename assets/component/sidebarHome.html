@@ -31,7 +31,7 @@
                             if( estadoSesion.clase == 'ok' ) // Si el login validó, voy al panel de control  
                             {
                                 setCookie('user', datos.email, 7); // Esto está sin encriptar ni uso un token de sesión. Claramente sirve únicamente para simular el login sin base de datos y nunca debería usarse en producción
-                                $(location).attr('href', 'ejercicio2.html');
+                                $(location).attr('href', 'panel.html');
                             } 
                         }, 1500);
                     });
