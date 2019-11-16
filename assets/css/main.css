@@ -232,6 +232,11 @@ main div
 {
     background: var(--background1);
 }
+div[id^='letra']{
+    color: red;
+    margin: 0 5px 0 5px;
+    display: inline-block;
+}
 /* Responsive */
 @media (max-width: 1279px) { /* Entre 1023px y 1279px (tablets) */
     .grid-4 {grid-template-columns: repeat(2, 50%);}
