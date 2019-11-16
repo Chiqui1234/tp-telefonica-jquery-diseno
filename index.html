@@ -11,7 +11,7 @@
     <div id="loginLoad"></div>
     <main class="read-width">
         <h1>Trabajo práctico M3 | Telefónica</h1>
-        <p>Hola Ángel, ojalá te guste el desarrollo del sitio. La idea original era separar cada parte del sitio web en pequeños componentes, pero todo se empezó a complicar cuándo quería incluir un componente dentro de otro.</p>
+        <p>Hola Ángel, ojalá te guste el desarrollo del sitio. La idea original era separar cada parte del sitio web en pequeños componentes, pero todo se empezó a complicar cuándo quería incluir un componente dentro de otro (mediante JQuery.load()).</p>
         <p>Vi que este tema de "componentes" está muy resuelto en AngularJS :D</p>
         <p>No pudimos implementar todo cómo queríamos por falta de tiempo. El grupo real es de dos personas y tuvimos algunos asuntos personales que resolver, pero el trabajo práctico está.</p>
         <p>Ya vi que me asignaron a mi y mi compañero a otro grupo más numeroso, de los cuáles todos asisten a clase :)</p>
@@ -30,15 +30,14 @@ integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 crossorigin="anonymous"></script>
 <script src="assets/js/cookies.js"></script>
 <script>
-    if( getCookie('user') != null )
-    {
-        document.write('<p class="padding">Se te redigirá al panel de control.</p>');
-        setTimeout(function() {
-            $(location).attr('href', 'panel.html');
-        }, 1500);
-    }
-    else
-        $('#loginLoad').load('assets/component/sidebarHome.html');
+    $('#loginLoad').load('assets/component/sidebarHome.html');
+    // function redireccionAlPanel()
+    // {
+    //     document.write('<p class="padding">Se te redigirá al panel de control.</p>');
+    //     setTimeout(function() {
+    //         $(location).attr('href', 'panel.html');
+    //     }, 1500);
+    // }
 </script>
 </body>
 </html>

@@ -2,5 +2,9 @@
 <div id="bienvenida" class="widget ok padding"></div>
 <script>
     let user = getCookie('user');
-    $('#bienvenida').append(`<p>¡Bienvenid@, ${user}!</p>`);
+    if(user != '' && user != null)
+        $('#bienvenida').append(`<p>¡Bienvenid@, ${user}!</p>`);
+    else 
+        $('#bienvenida').append('<p>¡Bienvenido! No tienes una sesión activa pero puedes hacerlo desde la sidebar, <a href="index.html">aquí</a>.');
+    
 </script>
