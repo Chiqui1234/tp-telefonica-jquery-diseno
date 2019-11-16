@@ -17,13 +17,13 @@
             <div id="palabra">
 
             </div>
-            <div id="muneco">
+            <!-- <div id="muneco">
 
-            </div>
+            </div> -->
             <div id="info">
                 <p><span id="cantVidas"></span> vidas</p>
                 <p><span id="cantLetras"></span> letras</p>
-                <input type="text" placeholder="¿Que letra podrá ser?" id="letra" class="full-width" />
+                <input type="text" placeholder="¿Que letra podrá ser?" id="letraNueva" class="full-width" />
                 <input type="button" value="Probar esta letra" id="enviar" />
             </div>
         </div>
@@ -33,36 +33,54 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
 <script>
-function crearGuiones(cantGuiones)
+function crearGuiones(id, cantGuiones)
 {
     let guionesHtml = '';
     for(let i = 0;i < cantGuiones;i++)
-        guionesHtml += ' _ ';
+        guionesHtml += `<div id="letra${i}">_</div>`;       
     return guionesHtml;
 }
+
+function search(palabra, letra)
+{
+    let pos;
+    /* Caso de ejemplo:
+        Si tengo 'elefante', la función search() debe devolver la posición 0, 2 y 7. Recordar que la primer
+        pos y la última ya están dadas por la aplicación
+    */
+   for(let i = 0;i < palabra.length;i++)
+       if(palabra.charAt(i) == letra) // Si el caracter analizado es igual a la letra
+        pos.push(i);
+
+   return pos[0] == null?-1:pos;
+}
+
+function agregarLetras(id, pos)
+{
+    for(int i = 0;i < )
+    $(id+pos[i])
+}
+
 $(document).ready(function()
 {
-    let palabra = prompt('Ingresar palabra a adivinar por el jugador');
-    let vidas = parseInt(prompt('Ingresar vidas del jugador'));
+    let palabra = '', vidas = '';
+    while( palabra.length < 4 )
+    {
+        palabra = prompt('Ingresar palabra a adivinar por el jugador');
+        vidas = parseInt(prompt('Ingresar vidas del jugador'));
+    }
     let cantLetras = palabra.length;
     let cantGuiones = cantLetras-2; // Le resto el primer y último caracter, que son las letras que SI van a aparecer desde el primer momento
-    let guionesHtml = crearGuiones(cantGuiones);
+    guionesHtml = crearGuiones('palabra', cantGuiones);
     let letrasEncontradas = [];
     $('#cantVidas').html(vidas);
     $('#cantLetras').html(cantLetras);
     $('#palabra').html(palabra.charAt(0)+guionesHtml+palabra.charAt(cantLetras-1));
-    $('enviar').click(function()
+    $('#enviar').click(function()
     {
-        let letra = $('#letra').val();
+        let letra = $('#letraNueva').val();
         let pos = search(palabra, letra);
-        if( letra != null && pos != -1 )
-        {
-            letrasEncontradas.push(letra);
-        }
-        else
-        {
-            vidas--;
-        }
+        agregarLetras('palabra', pos); // Agrego las letras al document
     });
 });
 </script>
