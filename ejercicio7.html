@@ -32,57 +32,6 @@
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
-<script>
-function crearGuiones(id, cantGuiones)
-{
-    let guionesHtml = '';
-    for(let i = 0;i < cantGuiones;i++)
-        guionesHtml += `<div id="letra${i}">_</div>`;       
-    return guionesHtml;
-}
-
-function search(palabra, letra)
-{
-    let pos;
-    /* Caso de ejemplo:
-        Si tengo 'elefante', la función search() debe devolver la posición 0, 2 y 7. Recordar que la primer
-        pos y la última ya están dadas por la aplicación
-    */
-   for(let i = 0;i < palabra.length;i++)
-       if(palabra.charAt(i) == letra) // Si el caracter analizado es igual a la letra
-        pos.push(i);
-
-   return pos[0] == null?-1:pos;
-}
-
-function agregarLetras(id, pos)
-{
-    for(int i = 0;i < )
-    $(id+pos[i])
-}
-
-$(document).ready(function()
-{
-    let palabra = '', vidas = '';
-    while( palabra.length < 4 )
-    {
-        palabra = prompt('Ingresar palabra a adivinar por el jugador');
-        vidas = parseInt(prompt('Ingresar vidas del jugador'));
-    }
-    let cantLetras = palabra.length;
-    let cantGuiones = cantLetras-2; // Le resto el primer y último caracter, que son las letras que SI van a aparecer desde el primer momento
-    guionesHtml = crearGuiones('palabra', cantGuiones);
-    let letrasEncontradas = [];
-    $('#cantVidas').html(vidas);
-    $('#cantLetras').html(cantLetras);
-    $('#palabra').html(palabra.charAt(0)+guionesHtml+palabra.charAt(cantLetras-1));
-    $('#enviar').click(function()
-    {
-        let letra = $('#letraNueva').val();
-        let pos = search(palabra, letra);
-        agregarLetras('palabra', pos); // Agrego las letras al document
-    });
-});
-</script>
+<script src="assets/js/ejercicio7.js"></script>
 </body>
 </html>
